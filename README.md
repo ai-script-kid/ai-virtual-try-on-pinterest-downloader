@@ -1,5 +1,9 @@
 # Pinterest Downloader and AI Virtual Try-On iOS App (Swift)
 
+<p align="center">
+  <img src="docs/banner.png" alt="PinSave — Save Pinterest Looks. Try Them On." width="360">
+</p>
+
 An iOS app to **download Pinterest images & videos** and run an **AI virtual try-on** — drop in a Pinterest clothing pin, pick a photo of yourself, and the app generates a photorealistic image of you wearing the item.
 
 > ⚠️ This repository ships with **placeholder API keys**. You must supply your own credentials (see [Configuration](#configuration)) before the app or backend will work.
