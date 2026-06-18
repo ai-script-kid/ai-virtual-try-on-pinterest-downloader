@@ -1,0 +1,74 @@
+name: PinSave
+schemes:
+  PinSave:
+    build:
+      targets:
+        PinSave: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+options:
+  bundleIdPrefix: pin.saveandtryon
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupOrdering:
+    - order: [App, Models, Services, Extensions, ViewModels, Views, Fonts]
+
+packages:
+  FirebaseSDK:
+    url: https://github.com/firebase/firebase-ios-sdk
+    from: "11.6.0"
+  RevenueCat:
+    url: https://github.com/RevenueCat/purchases-ios
+    from: "5.20.0"
+
+targets:
+  PinSave:
+    type: application
+    platform: iOS
+    sources:
+      - path: PinSave
+    dependencies:
+      - package: FirebaseSDK
+        product: FirebaseAuth
+      - package: FirebaseSDK
+        product: FirebaseFirestore
+      - package: FirebaseSDK
+        product: FirebaseStorage
+      - package: FirebaseSDK
+        product: FirebaseFunctions
+      - package: RevenueCat
+        product: RevenueCat
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: pin.saveandtryon.ai
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.9"
+        INFOPLIST_FILE: PinSave/Info.plist
+        DEVELOPMENT_TEAM: ""
+    info:
+      path: PinSave/Info.plist
+      properties:
+        CFBundleDisplayName: PinSave
+        CFBundleIconName: AppIcon
+        UILaunchScreen:
+          UIColorName: ""
+        NSPhotoLibraryUsageDescription: "Used to select your photo for the virtual try-on feature"
+        NSPhotoLibraryAddUsageDescription: "Saves downloaded Pinterest images to your photo library"
+        NSCameraUsageDescription: "Used to take a photo for the virtual try-on feature"
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIAppFonts:
+          - Nunito[wght].ttf

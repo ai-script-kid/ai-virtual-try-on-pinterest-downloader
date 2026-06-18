@@ -1,0 +1,12 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /users/{uid}/tryon-inputs/{filename} {
+      allow write: if request.auth != null && request.auth.uid == uid
+                   && request.resource.contentType == 'image/jpeg'
+                   && request.resource.size < 10 * 1024 * 1024;
+      // only Cloud Functions (admin) reads these; no client read needed
+      allow read: if false;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CocoaPods
+Pods/
+
+# Node / Firebase Functions
+node_modules/
+npm-debug.log*
+firebase-debug.log*
+.firebase/
+
+# Secrets — do NOT commit real credentials
+# GoogleService-Info.plist  # uncomment to keep your Firebase config private
+.env
+.env.*
+
+# Claude Code local settings
+.claude/
+
+# StoreKit local config
+*.storekit

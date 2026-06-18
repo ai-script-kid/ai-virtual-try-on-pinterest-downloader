@@ -1,0 +1,124 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <!-- Background: warm terracotta spotlight fading to deep rust -->
+    <radialGradient id="bgGrad" cx="42%" cy="35%" r="66%"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#D47242"/>
+      <stop offset="56%"  stop-color="#A84A20"/>
+      <stop offset="100%" stop-color="#681E04"/>
+    </radialGradient>
+
+    <!-- Pin body: bright cream → warm sand -->
+    <linearGradient id="pinGrad" x1="20%" y1="0%" x2="80%" y2="100%"
+                    gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#FEFEFB"/>
+      <stop offset="42%"  stop-color="#F2E2CC"/>
+      <stop offset="100%" stop-color="#D4B490"/>
+    </linearGradient>
+
+    <!-- Eye interior: rich rust, slightly lighter at centre -->
+    <radialGradient id="eyeGrad" cx="42%" cy="38%" r="65%"
+                    gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#B85232"/>
+      <stop offset="100%" stop-color="#6A1E04"/>
+    </radialGradient>
+
+    <!-- Eye inner rim: subtle highlight ring -->
+    <radialGradient id="eyeRimGrad" cx="38%" cy="32%" r="60%"
+                    gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#D06038" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#D06038" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Drop shadow for the pin body -->
+    <filter id="pinShadow" x="-30%" y="-12%" width="160%" height="144%"
+            color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="28"
+                    flood-color="#3C1000" flood-opacity="0.52"/>
+    </filter>
+
+    <!-- Softer glow shadow for the eye circle -->
+    <filter id="eyeShadow" x="-30%" y="-30%" width="160%" height="160%"
+            color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="4" stdDeviation="10"
+                    flood-color="#3C1000" flood-opacity="0.40"/>
+    </filter>
+
+    <!-- iOS rounded-square clip -->
+    <clipPath id="iconClip">
+      <rect width="1024" height="1024" rx="226" ry="226"/>
+    </clipPath>
+
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+
+    <!-- ── Background ── -->
+    <rect width="1024" height="1024" fill="url(#bgGrad)"/>
+
+    <!-- Soft diffuse highlight — upper-left warmth -->
+    <ellipse cx="320" cy="200" rx="600" ry="460"
+             fill="white" fill-opacity="0.065"/>
+
+    <!-- Tighter bright spot at very top -->
+    <ellipse cx="480" cy="130" rx="220" ry="160"
+             fill="white" fill-opacity="0.04"/>
+
+    <!-- ── Pin body (solid path, no hole) ──
+         Circle centre (512, 318), radius 230.
+         Left  = (282, 318)   Right = (742, 318)
+         Tip   = (512, 776)
+
+         Tangent control points:
+           • Left shoulder:  ctrl-2 = (282, 548) — directly below left point  → smooth join
+           • Right shoulder: ctrl-1 = (742, 548) — directly below right point → smooth join  -->
+    <path fill="url(#pinGrad)"
+          filter="url(#pinShadow)"
+          d="M 512 776
+             C 488 724, 282 544, 282 318
+             A 230 230 0 0 0 742 318
+             C 742 544, 536 724, 512 776 Z"/>
+
+    <!-- Left-shoulder rim light — white streak gives 3-D curvature feel -->
+    <path d="M 342 222 C 320 310, 306 400, 316 470"
+          fill="none"
+          stroke="white"
+          stroke-width="20"
+          stroke-linecap="round"
+          stroke-opacity="0.22"/>
+
+    <!-- ── Eye / inner circle ──
+         Drawn ON TOP of the pin so the colour is always correct.
+         Radius slightly smaller than the "hole" to leave a cream border ring. -->
+    <circle cx="512" cy="310" r="90"
+            fill="url(#eyeGrad)"
+            filter="url(#eyeShadow)"/>
+
+    <!-- Eye inner highlight: soft rim catch-light -->
+    <circle cx="512" cy="310" r="90"
+            fill="url(#eyeRimGrad)"/>
+
+    <!-- Small specular dot inside the eye (top-left) -->
+    <circle cx="490" cy="287" r="18"
+            fill="white" fill-opacity="0.22"/>
+
+    <!-- ── Sparkle cluster — upper-right, suggests AI magic ── -->
+
+    <!-- Primary 4-pointed star -->
+    <path d="M 672 194
+             L 677 208 L 691 213 L 677 218 L 672 232
+             L 667 218 L 653 213 L 667 208 Z"
+          fill="white" fill-opacity="0.85"/>
+
+    <!-- Secondary small star -->
+    <path d="M 706 164
+             L 709 171 L 716 174 L 709 177 L 706 184
+             L 703 177 L 696 174 L 703 171 Z"
+          fill="white" fill-opacity="0.55"/>
+
+    <!-- Tiny dot accent -->
+    <circle cx="646" cy="180" r="7" fill="white" fill-opacity="0.38"/>
+
+  </g>
+</svg>
